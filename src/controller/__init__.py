@@ -31,3 +31,15 @@ def marcarComoVisto(id_filme, janela):
 def recuperarFilmesCadastrados():
     dados = m.recuperarFilmesCadastradosAcao()
     return dados
+
+def recuperarFilmesCID():
+    dados = m.recuperarFilmesCadastradosCIDAcao()
+    return dados
+
+def excluirFilmeSelecionadoController(id_filme):
+    m.excluirFilmeSelecionadoAcao(id_filme)
+    
+def PreencherCamposIDSelecionadoController(id_filme):
+    dados = m.preencherCamposIDSelecionadoAcao(id_filme)
+    return dados
+    

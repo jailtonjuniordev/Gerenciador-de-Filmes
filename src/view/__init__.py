@@ -8,12 +8,16 @@ def mostrar_tela_adc_filmes(janela):
     janela['-TELA_ADC_FILME-'].update(visible=True)
     janela['-TELA_OUTROS-'].update(visible=False)
     janela['-TITULO-'].update(visible=False)
+    janela['-TELA_OUTROS_EDITAR-'].update(visible=False)
+    janela['-TELA_OUTROS_DELETAR-'].update(visible=False)
 
 def mostrar_tela_adc_filme_assistido(janela):
     janela['-TELA_ADC_FILME_ASSISTIDO-'].update(visible=True)
     janela['-TELA_LISTAR_FILME-'].update(visible=False)
     janela['-TELA_ADC_FILME-'].update(visible=False)
     janela['-TELA_OUTROS-'].update(visible=False)
+    janela['-TELA_OUTROS_EDITAR-'].update(visible=False)
+    janela['-TELA_OUTROS_DELETAR-'].update(visible=False)
     janela['-TITULO-'].update(visible=False)
 
 def mostrar_tela_listar_filmes(janela):
@@ -22,6 +26,8 @@ def mostrar_tela_listar_filmes(janela):
     janela['-TELA_ADC_FILME-'].update(visible=False)
     janela['-TELA_OUTROS-'].update(visible=False)
     janela['-TITULO-'].update(visible=False)
+    janela['-TELA_OUTROS_EDITAR-'].update(visible=False)
+    janela['-TELA_OUTROS_DELETAR-'].update(visible=False)
 
 def mostrar_tela_outros(janela):
     janela['-TELA_ADC_FILME_ASSISTIDO-'].update(visible=False)
@@ -29,8 +35,30 @@ def mostrar_tela_outros(janela):
     janela['-TELA_ADC_FILME-'].update(visible=False)
     janela['-TELA_OUTROS-'].update(visible=True)
     janela['-TITULO-'].update(visible=False)
+    janela['-TELA_OUTROS_EDITAR-'].update(visible=False)
+    janela['-TELA_OUTROS_DELETAR-'].update(visible=False)
 
-def tela1():
+def mostrar_tela_outros_editar(janela):
+    janela['-TELA_ADC_FILME_ASSISTIDO-'].update(visible=False)
+    janela['-TELA_LISTAR_FILME-'].update(visible=False)
+    janela['-TELA_ADC_FILME-'].update(visible=False)
+    janela['-TELA_OUTROS-'].update(visible=False)
+    janela['-TITULO-'].update(visible=False)
+    janela['-TELA_OUTROS_EDITAR-'].update(visible=True)
+    janela['-TELA_OUTROS_DELETAR-'].update(visible=False)
+
+def mostrar_tela_outros_deletar(janela):
+    janela['-TELA_ADC_FILME_ASSISTIDO-'].update(visible=False)
+    janela['-TELA_LISTAR_FILME-'].update(visible=False)
+    janela['-TELA_ADC_FILME-'].update(visible=False)
+    janela['-TELA_OUTROS-'].update(visible=False)
+    janela['-TITULO-'].update(visible=False)
+    janela['-TELA_OUTROS_EDITAR-'].update(visible=False)
+    janela['-TELA_OUTROS_DELETAR-'].update(visible=True)
+
+
+
+def tela1(valor):
     c.verificarConexao()
     btn_adc = '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'
     btn_assistir = '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'
@@ -115,6 +143,49 @@ def tela1():
         sg.Button(image_data=btn_del, border_width=0, button_color=(sg.theme_background_color(), sg.theme_background_color()), tooltip="Excluir Filme Cadastrado", key='-EXCLUIR_FILME-'),],
     ]
     
+    
+    
+    
+    
+    nome_filme = ''; sinopse = ''; data_lancamento = ''; categoria = '';
+    
+    frame_outros_editar = [
+        [sg.Text('Editar Filme', size=(680,0), justification='center', font=("Futura, 16"))],
+        [sg.Text('ID do Filme', size=(15,0)), sg.Input(border_width=0, key='-ID_FILME_SELECIONADO-'), sg.Button('Pesquisar Filme', border_width=0, key='-PESQUISAR_FILME_INDICADO-', size=(320,0))],
+        [sg.Text('Nome do Filme *', size=(15,0)), sg.Input(f'{nome_filme}',size=(680,5), border_width=0, key='-NOME_FILME_EDITO-',do_not_clear=False)],
+        [sg.Text('Sinopse', size=(15,0)), sg.Multiline(f'{sinopse}', size=(680,5), key='-SINOPSE_EDITADO-', do_not_clear=False)],
+        [sg.Text('Data de Lançamento *', size=(15,0)), sg.Input(f'{data_lancamento}', size=(680,5), border_width=0, key='-LANCAMENTO_FILME_EDITADO-', do_not_clear=False)],
+        [sg.Text('Categoria *', size=(15,0)), sg.Combo(values=categorias, default_value=f'{categoria}', size=(680,5), readonly=True, key='-CATEGORIA_FILME_EDITADO-',  )],
+        [sg.Text()],
+        [sg.Text(' '*30),
+        sg.Button('Alterar Filme', border_width=0, size=(30,2), font=("Neuton, 16"), key='-SALVAR_DADOS_FILME_EDITADO-')]
+    ]
+    
+    outros_editar = [
+        [sg.Frame(layout=frame_outros_editar, title='', border_width=0)],
+    ]
+    
+    frame_outros_deletar = [
+        [sg.Text('Deletar Filme', size=(680,0), justification='center', font=("Futura, 16"))],
+        
+    ]
+    
+    cabeca_todos = ['ID', 'Nome do Filme', 'Sinopse', 'Data de Lançamento', "Assistido"]
+    
+    outros_deletar = [
+        [sg.Frame(layout=frame_outros_deletar, title='', border_width=0)],
+        [sg.Text('ID do filme: '), sg.Input(size=(30,2), key='-ID_DESEJADO_EXCLUIR-', do_not_clear=False), sg.Button('Excluir Filme', key='-EXCLUIR_FILME_SELECIONADO-')],
+        [sg.Button('Atualizar Lista', key='-ATUALIZAR_LISTA_FILMES_PARA_EXCLUIR-')],
+        [sg.Table(values=c.recuperarFilmesCID(), headings=cabeca_todos,
+                   auto_size_columns=False, 
+                   col_widths=[5,13,25,15,15],
+                   row_height=45,
+                   justification='center',
+                   key='-TODOS_FILMES_CADASTRADOS_EXCLUIR-'
+                   )],
+    ]
+    
+    
     layout = [
         [sg.Column(menu, element_justification='center', key='-MENU_PRINCIPAL-')],
         [sg.HSeparator()],
@@ -123,10 +194,12 @@ def tela1():
          sg.Column(adc_filme_assistido, element_justification='center', visible=False, key='-TELA_ADC_FILME_ASSISTIDO-'),
          sg.Column(listar_filme, element_justification='center', visible=False, key='-TELA_LISTAR_FILME-'),
          sg.Column(outros, element_justification='center', visible=False, key='-TELA_OUTROS-'),
+         sg.Column(outros_editar, element_justification='center', visible=False, key='-TELA_OUTROS_EDITAR-'),
+         sg.Column(outros_deletar, element_justification='center', visible=False, key='-TELA_OUTROS_DELETAR-'),
          ]
     ]
 
-    return sg.Window("Gerenciador de Filmes", layout=layout, finalize=True, size=(680,480))
+    return sg.Window("Gerenciador de Filmes", layout=layout, finalize=True, size=(680,480), grab_anywhere_using_control=False)
 
 
 def inserirNovoFilme(valor):
@@ -135,6 +208,8 @@ def inserirNovoFilme(valor):
 def recuperarFilmesNaoAssistidos():
     dados = c.filmesNaoAssistidos()
     return dados
+
+
 
 def marcarVistoAcao(id_filme, janela):
     if id_filme.strip() != '':
@@ -146,8 +221,18 @@ def atualizarTabelaFilmesNaoVistos(janela):
     janela['-FILMES_NAO_VISTOS-'].update(recuperarFilmesNaoAssistidos())
   
 def atualizarTabelaFilmesTotais(janela):
-     janela['-TODOS_FILMES_CADASTRADOS-'].update(recuperarTodosFilmesCadastrados())
+    janela['-TODOS_FILMES_CADASTRADOS-'].update(recuperarTodosFilmesCadastrados())
   
 def recuperarTodosFilmesCadastrados():
     dados = c.recuperarFilmesCadastrados()
+    return dados
+
+def atualizarTabelaFilmesExcluir(janela):
+    janela['-TODOS_FILMES_CADASTRADOS_EXCLUIR-'].update(c.recuperarFilmesCID())
+
+def excluirFilmeSelecionado(id_filme):
+    c.excluirFilmeSelecionadoController(id_filme)
+    
+def preencherCamposIDSelecionado(id_filme):
+    dados = c.PreencherCamposIDSelecionadoController(id_filme)
     return dados

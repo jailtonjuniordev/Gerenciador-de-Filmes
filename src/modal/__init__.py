@@ -79,3 +79,31 @@ def recuperarFilmesCadastradosAcao():
         return dados
     except Exception as Error:
         sg.popup(f'Erro inesperado\n{Error}', title='Erro')
+        
+def recuperarFilmesCadastradosCIDAcao():
+    try:
+        Operacoes.cursor.execute('SELECT id_filme, nome_filme, sinopse, data_lancamento, CASE assistido WHEN "0" THEN "Não" WHEN "1" THEN "Sim" END AS assistido FROM filmes')
+        dados = Operacoes.cursor.fetchall()
+        return dados
+    except Exception as Error:
+        sg.popup(f'Erro inesperado\n{Error}', title='Erro')
+        
+        
+def excluirFilmeSelecionadoAcao(id_filme):
+    try:
+        Operacoes.cursor.execute(f'DELETE FROM filmes WHERE id_filme = "{id_filme}"')
+        Operacoes.banco.commit()
+    except Exception as Error:
+        sg.popup(f'Erro inesperado\n{Error}', title='Erro')
+    else:
+        sg.popup('Filme Excluido com Sucesso!', title='Sucesso')
+    pass
+
+def preencherCamposIDSelecionadoAcao(id_filme):
+    try:
+        Operacoes.cursor.execute(f'SELECT nome_filme, sinopse, data_lancamento, genero FROM filmes WHERE id_filme = "{id_filme}"')
+        dados = Operacoes.cursor.fetchall()
+    except Exception as Error:
+        sg.popup(f'Erro inesperado\n{Error}', title='Erro')
+    else:
+        return dados
